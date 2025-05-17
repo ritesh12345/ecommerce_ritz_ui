@@ -1,10 +1,13 @@
 import { Component,Input } from '@angular/core';
 import { Product } from '../../../shared/models/product';
-import { MatCard } from '@angular/material/card';
+import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-item',
-  imports: [MatCard],
+  imports: [MatCard,MatCardContent,MatCardActions,MatIcon,MatButton,CurrencyPipe],
   templateUrl: './product-item.component.html',
   styleUrl: './product-item.component.scss'
 })
