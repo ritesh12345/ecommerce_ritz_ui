@@ -8,9 +8,13 @@ jobs:
         steps:
         - name: Checkout Repo
           uses: actions/checkout@v4
-        - name: Welcome Message
-          run: echo 'Hello, welcome to your first GitHub Actions workflow!'
-        - name: List Files
-          run: ls -la
-        - name: Read File
-          run: cat README.md
+        - name: List and Read file ReadMe
+          run: | 
+            echo 'Hello, welcome to your first GitHub Actions workflow!'
+            ls -la
+            cat README.md
+
+        # - name: List Files
+        #   run: ls -la
+        # - name: Read File
+        #   run: cat README.md
