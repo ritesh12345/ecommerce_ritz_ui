@@ -1,46 +1,17 @@
-name: 'First Example Workflow'
+name: 'Docker Build'
 
-
-on: push
-
+on:
+ push: 
 
 jobs:
-    first-job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout Repo
-          uses: actions/checkout@v4
-        - name: Execute shell script
-          run: |
-            chmod +x ./scripts/workflow-script.sh
-            ./scripts/workflow-script.sh
-
-    second-job:
-        needs: first-job
-        runs-on: ubuntu-latest
-        steps:
-        - name: Checkout Repo
-          uses: actions/checkout@v4
-        - name: Execute shell script
-          run: |
-            chmod +x ./scripts/workflow-script.sh
-            ./scripts/workflow-script.sh
-
-
-    third-job:
-        concurrency:
-            group: 'third-job-group'
-            cancel-in-progress: false
-        runs-on: ubuntu-latest
-        needs: second-job
-        steps:
-        - name: Checkout Repo
-          uses: actions/checkout@v4
-        - name: Execute shell script
-          run: |
-            chmod +x ./scripts/workflow-script.sh
-            ./scripts/workflow-script.sh
-        - name : Pause for 100 seconds
-          run : sleep 100s
-        
-          #Test 4
+   docker:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        images: [hello-world, alpine, busybox]
+    runs-on: ${{ matrix.os }}
+    steps:
+     - name: Echo Docker Details
+       run: docker info
+     - name: Run Images
+       run: docker run ${{ matrix }}
