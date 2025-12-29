@@ -2,7 +2,7 @@ name: 'First Example Workflow'
 
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 
 jobs:
@@ -29,6 +29,9 @@ jobs:
 
 
     third-job:
+        concurrency:
+            group: 'third-job-group'
+            cancel-in-progress: true
         runs-on: ubuntu-latest
         needs: second-job
         steps:
