@@ -8,10 +8,10 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        images: [hello-world, alpine, busybox]
+        images: [hello-world, alpine]
     runs-on: ${{ matrix.os }}
     steps:
      - name: Echo Docker Details
        run: docker info
      - name: Run Images
-       run: docker run ${{ matrix }}
+       run: docker run ${{ matrix.images }}
