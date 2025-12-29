@@ -1,7 +1,6 @@
 name: 'First Example Workflow'
-
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
 
 
 jobs:
