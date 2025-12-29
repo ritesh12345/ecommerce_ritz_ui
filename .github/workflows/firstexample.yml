@@ -30,7 +30,7 @@ jobs:
     third-job:
         concurrency:
             group: 'third-job-group'
-            cancel-in-progress: true
+            cancel-in-progress: false
         runs-on: ubuntu-latest
         needs: second-job
         steps:
