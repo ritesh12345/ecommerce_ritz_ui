@@ -25,6 +25,8 @@ jobs:
           run: |
             chmod +x ./scripts/workflow-script.sh
             ./scripts/workflow-script.sh
+        - name: Pause for 100 seconds
+          run: sleep 100
 
 
     third-job:
